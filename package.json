@@ -1,0 +1,17 @@
+{
+  "name": "giveindia",
+  "version": "1.0.0",
+  "description": "Automated Parking Slot App",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Bharath Kumar",
+  "license": "ISC",
+  "devDependencies": {
+    "grunt": "^1.0.3",
+    "grunt-cli": "^1.2.0",
+    "grunt-contrib-connect": "^1.0.2",
+    "grunt-contrib-watch": "^1.0.0"
+  }
+}
