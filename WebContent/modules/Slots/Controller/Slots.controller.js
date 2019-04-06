@@ -187,18 +187,18 @@
 
         $scope.registerCar = function(criteria) {
             if (checkFormat(criteria.regno)) {
-                // if (checkIfCarExists(criteria.regno, "CAR_BY_COLOUR")) {
-                var nearestSlotObj = checkIfCarExists(criteria.regno, "NEAREST_SLOT");
-                $scope.ui.cars[nearestSlotObj.index].regno = criteria.regno;
-                $scope.ui.cars[nearestSlotObj.index].color = criteria.color.toLowerCase();
-                $scope.ui.cars[nearestSlotObj.index].slot = nearestSlotObj.index + 1;
-                // $scope.ui.cars.splice(newslotIndex, 0, { regno: criteria.regno, color: criteria.color, slot: newslotIndex + 1 });
-                // $scope.ui.cars.push({ regno: criteria.regno, color: criteria.color, slot: $scope.ui.cars.length + 1 });
-                $scope.registrationCriteria = {};
-                $scope.ui.registeredMsg = true;
-                $scope.ui.newSlotAllocated = nearestSlotObj.index + 1;
-                successHandler();
-                // }
+                if (checkIfCarExists(criteria.regno, "CAR_BY_COLOUR")) {
+                    var nearestSlotObj = checkIfCarExists(criteria.regno, "NEAREST_SLOT");
+                    $scope.ui.cars[nearestSlotObj.index].regno = criteria.regno;
+                    $scope.ui.cars[nearestSlotObj.index].color = criteria.color.toLowerCase();
+                    $scope.ui.cars[nearestSlotObj.index].slot = nearestSlotObj.index + 1;
+                    // $scope.ui.cars.splice(newslotIndex, 0, { regno: criteria.regno, color: criteria.color, slot: newslotIndex + 1 });
+                    // $scope.ui.cars.push({ regno: criteria.regno, color: criteria.color, slot: $scope.ui.cars.length + 1 });
+                    $scope.registrationCriteria = {};
+                    $scope.ui.registeredMsg = true;
+                    $scope.ui.newSlotAllocated = nearestSlotObj.index + 1;
+                    successHandler();
+                }
             } else {
                 alertHandler("Invalid Registration Number Format!");
             }
