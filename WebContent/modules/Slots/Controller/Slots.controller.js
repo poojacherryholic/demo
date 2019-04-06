@@ -205,7 +205,13 @@
         };
 
         $scope.findCar = function(num) {
+            var resultLength;
             if (checkFormat(num)) {
+                $scope.ui.cars.filter(function(child) {
+                    if (child.regno === num) {
+
+                    }
+                });
                 checkIfCarExists(num, "GET_SLOT");
                 successHandler();
             } else {
