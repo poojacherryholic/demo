@@ -1,6 +1,5 @@
 <div class="container">
-    <h4 class="mr-l15">Total Cars Parked: <b>{{ui.cars.length}}</b></h4>
-    <h4 class="mr-l15">Empty Slots : <b>{{100 - ui.cars.length}}</b></h4>
+    <h4 class="mr-l15">Total Cars Parked:</h4>
     <div class="col-xs-6 col-sm-6 col-md-2 col-lg-3">
         <div class="parking-slot-area" ng-repeat="car in ui.cars track by $index">
             <div class="card">
@@ -73,7 +72,7 @@
                     <input type="submit" class="btn btn-primary" />
                 </div>
             </form>
-            <div ng-if="ui.slotNum.length>0" class="alert alert-info alert-dismissible">
+            <div ng-if="ui.slotNum>0" class="alert alert-info alert-dismissible">
                 <a href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                 Your Car is parked in slot : <strong>{{ui.slotNum}}</strong>
             </div>
