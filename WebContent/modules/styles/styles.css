@@ -3,7 +3,6 @@
 }
 
 i.fa {
-    font-size: 22px;
     cursor: pointer;
 }
 
@@ -29,4 +28,42 @@ i.fa {
     max-height: 200px;
     height: 200px;
     overflow: auto;
+}
+
+.filtered-cars-table {
+    width: 250px;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+.filtered-cars-table tbody {
+    display: block;
+    width: 100%;
+    overflow: auto;
+    height: 200px;
+}
+
+.filtered-cars-table thead tr {
+    display: block;
+}
+
+.filtered-cars-table thead {
+    background: black;
+    color: #fff;
+}
+
+.filtered-cars-table th,
+.filtered-cars-table td {
+    padding: 5px;
+    text-align: left;
+    width: 250px;
+}
+
+.filtered-cars-table tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+.filtered-cars-table tbody>tr>td:last-child, thead tr>th:last-child {
+    text-align: right;
+    padding-right: 30px;
 }
