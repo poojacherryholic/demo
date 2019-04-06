@@ -13,7 +13,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <!-- <link rel="icon" href="favicon.png" type="image/x-icon" /> -->
-    <link rel="shortcut icon" href="https://d3qevbwo9tt32q.cloudfront.net/static/images/program/card-updation.jpg?w=1080&q=75" type="image/x-icon">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
     <!--Basic Styles-->
     <link href="https://fonts.googleapis.com/css?family=Signika" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/fontawesome.min.css" />
@@ -41,20 +41,20 @@
     <script src="modules/Home/Controller/Home.controller.js"></script>
     <script src="modules/Slots/Controller/Slots.controller.js"></script>
     <!---->
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="#"></a>
             </div>
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">GiveIndia</a></li>
-                <li><a href="#!/slots">View Slots</a></li>
-                <li><a href="#">Page 2</a></li>
-                <li><a href="#">Page 3</a></li>
+                <li class="active"><a href="#"><img src="images/card-updation.jpg" height="30" width="50">
+                        <span>GiveIndia</span>
+                    </a></li>
+                <li><a style="padding-top: 20px" href="#!/slots">View Slots</a></li>
             </ul>
         </div>
     </nav>
-    <div ng-view style="display: flex;"></div>
+    <div ng-view></div>
 </body>
 <!--  /Body -->
 

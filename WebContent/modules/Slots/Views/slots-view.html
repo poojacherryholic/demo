@@ -1,7 +1,7 @@
 <div class="container">
-    <h4>Total Cars Parked: <b>{{ui.cars.length}}</b></h4>
-    <h4>Empty Slots : <b>{{100 - ui.cars.length}}</b></h4>
-    <div class="col-xs-6 col-sm-6 col-md-2 col-lg-6">
+    <h4 class="mr-l15">Total Cars Parked: <b>{{ui.cars.length}}</b></h4>
+    <h4 class="mr-l15">Empty Slots : <b>{{100 - ui.cars.length}}</b></h4>
+    <div class="col-xs-6 col-sm-6 col-md-2 col-lg-3">
         <div class="parking-slot-area" ng-repeat="car in ui.cars track by $index">
             <div class="card">
                 <div class="chip" ng-if="car.regno!==null && car.slot!==null">
@@ -15,8 +15,12 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-3">
+    <div class="col-lg-3 border">
         <h4><b>Incoming car details:</b></h4>
+        <div ng-if="ui.registeredMsg" class="alert alert-info alert-dismissible">
+            <a href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <b>Your car has been parked into slot {{ui.newSlotAllocated}}</b>
+        </div>
         <form ng-submit="registerCar(registrationCriteria,$event)">
             <div class="form-group">
                 <label>Enter Reg.No</label>
@@ -30,57 +34,49 @@
                 <input class="btn btn-primary" type="submit" />
             </div>
         </form>
-        <div ng-if="ui.registeredMsg" class="alert alert-info alert-dismissible">
-            <a href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            <b>Your car has been parked into slot {{ui.newSlotAllocated}}</b>
-        </div>
-        <form ng-submit="findCar(findCarCriteria.regNum)">
-            <div class="form-group">
-                <label>Find My Car:</label>
-                <input type="text" class="form-control" placeholder="Enter Reg No" ng-model="findCarCriteria.regNum" required />
-            </div>
-            <div class="form-group">
-                <input type="submit" class="btn btn-primary" />
-            </div>
-        </form>
-        <div ng-if="ui.slotNum.length>0" class="alert alert-info alert-dismissible">
-            <a href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            Your Car is parked in slot : <strong>{{ui.slotNum}}</strong>
-        </div>
     </div>
-    <div class="container col-lg-3">
-        <h4><b>Filter Car Criteria :</b></h4>
-        <div class="form-group">
-            <label>Select Car Color:</label>
-            <select class="form-control" ng-model="searchCriteria.colorId" class="mr-r15" ng-change="fetchCarByColor(ui.cars,searchCriteria.colorId)">
-                <option ng-repeat="x in ui.colors" ng-value="{{x.id}}">{{x.color}}</option>
-            </select>
-        </div>
-        <div class="" ng-if="ui.filteredCars.length>0">
-            <p>Total cars with selected color are : <b>{{ui.filteredCars.length}}</b></p>
-            <!-- <div class="filtered-cars-widget">
-            <div ng-repeat="list in ui.filteredCars track by $index">            
-                <div class="card">
-                    <div class="chip">
-                        <b>{{list.regno}} are parked at slot : {{list.slot}}</b>                        
-                    </div>
-                </div>
+    <div class="display-flex">
+        <div class="border" flex>
+            <h4><b>Filter Car Criteria :</b></h4>
+            <div class="form-group">
+                <label>Select Car Color:</label>
+                <select class="form-control" ng-model="searchCriteria.colorId" class="mr-r15" ng-change="fetchCarByColor(ui.cars,searchCriteria.colorId)">
+                    <option ng-repeat="x in ui.colors" ng-value="{{x.id}}">{{x.color}}</option>
+                </select>
             </div>
-        </div> -->
-            <table class="filtered-cars-table">
-                <thead>
-                    <tr>
-                        <th>Reg.No</th>
-                        <th>Parked Slot</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="list in ui.filteredCars track by $index">
-                        <td>{{list.regno}}</td>
-                        <td>{{list.slot}}</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div flex ng-if="ui.filteredCars.length>0">
+                <p>Total cars with selected color are : <b>{{ui.filteredCars.length}}</b></p>
+                <table class="filtered-cars-table">
+                    <thead>
+                        <tr>
+                            <th>Reg.No</th>
+                            <th>Parked Slot</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="list in ui.filteredCars track by $index">
+                            <td>{{list.regno}}</td>
+                            <td>{{list.slot}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="border" flex>
+            <form ng-submit="findCar(findCarCriteria.regNum)">
+                <h4><b>Find Car</b></h4>
+                <div class="form-group">
+                    <label>Enter Car Number to find:</label>
+                    <input type="text" class="form-control" placeholder="Enter Reg No" ng-model="findCarCriteria.regNum" required />
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary" />
+                </div>
+            </form>
+            <div ng-if="ui.slotNum.length>0" class="alert alert-info alert-dismissible">
+                <a href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                Your Car is parked in slot : <strong>{{ui.slotNum}}</strong>
+            </div>
         </div>
     </div>
 </div>

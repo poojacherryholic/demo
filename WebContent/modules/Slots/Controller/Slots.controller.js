@@ -1,12 +1,13 @@
 (function() {
     "use strict";
-    angular.module("Giveindia").controller("SlotsController", ["$scope", "$http", function($scope, $http) {
+    angular.module("Giveindia").controller("SlotsController", ["$scope", "$http", "$timeout",function($scope, $http,$timeout) {
         $scope.ui = {
             cars: [],
             filteredCars: [],
             colors: [{ id: 0, color: 'White' }, { id: 1, color: 'Black' }, { id: 2, color: 'Red' }, { id: 3, color: 'Blue' }],
             slotNum: "",
-            registeredMsg: false
+            registeredMsg: false,
+            errorMsg: ""
         };
         $scope.searchCriteria = {},
             $scope.registrationCriteria = {},
@@ -71,27 +72,27 @@
                 {
                     "regno": "KA-01-HH-5454",
                     "color": "red",
-                    "slot": null
+                    "slot": 11
                 },
                 {
                     "regno": "KA-01-HH-6565",
                     "color": "white",
-                    "slot": null
+                    "slot": 12
                 },
                 {
                     "regno": "KA-01-HH-5656",
                     "color": "blue",
-                    "slot": null
+                    "slot": 13
                 },
                 {
                     "regno": "KA-01-HH-8484",
                     "color": "white",
-                    "slot": null
+                    "slot": 14
                 },
                 {
                     "regno": "KA-01-HH-4848",
                     "color": "red",
-                    "slot": null
+                    "slot": 15
                 },
                 {
                     "regno": "KA-01-HH-0202",
@@ -227,6 +228,13 @@
             alert(text);
         }
 
+        function successHandler() {
+            $(".alert-info").show('slow');
+            $timeout(function() {
+                $(".alert-info").hide('slow');
+            }, 4000);
+        }
+
         $scope.registerCar = function(criteria) {
             if (checkFormat(criteria.regno)) {
                 if (checkIfCarExists(criteria.regno, "CAR_BY_COLOUR")) {
@@ -234,12 +242,12 @@
                     $scope.ui.cars[nearestSlotObj.index].regno = criteria.regno;
                     $scope.ui.cars[nearestSlotObj.index].color = criteria.color.toLowerCase();
                     $scope.ui.cars[nearestSlotObj.index].slot = nearestSlotObj.index + 1;
-                    debugger;
                     // $scope.ui.cars.splice(newslotIndex, 0, { regno: criteria.regno, color: criteria.color, slot: newslotIndex + 1 });
                     // $scope.ui.cars.push({ regno: criteria.regno, color: criteria.color, slot: $scope.ui.cars.length + 1 });
                     $scope.registrationCriteria = {};
                     $scope.ui.registeredMsg = true;
                     $scope.ui.newSlotAllocated = nearestSlotObj.index + 1;
+                    successHandler();
                 }
             } else {
                 alertHandler("Invalid Registration Number Format!");
@@ -249,6 +257,7 @@
         $scope.findCar = function(num) {
             if (checkFormat(num)) {
                 checkIfCarExists(num, "GET_SLOT");
+                successHandler();
             } else {
                 alertHandler("Invalid Registration Number Format!");
             }
